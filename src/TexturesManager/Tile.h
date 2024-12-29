@@ -11,7 +11,7 @@ class Tile
 {
 public:
     void setNewPosition(int x, int y);
-    void setNewSize(int width, int height, bool isAspect);
+    void setNewSize(int _width, int _height, bool isAspect);
     void setNewTexture(std::string filename);
 
     std::pair<int, int> getPosition();
@@ -22,10 +22,20 @@ public:
 private:
     int posX = 0;
     int posY = 0;
-    const int width = 32;
-    const int height = 32;
+    int width = 32;
+    int height = 32;
     std::string textureLoc = "../../Resources/MissingTexture.png";
 };
 
+enum TileSizes
+{
+    size8 = 8,
+    size16 = 16,
+    size32 = 32,
+    size64 = 64,
+    size128 = 128,
+    size256 = 256,
+    size512 = 512,
+};
 
 #endif //TILE_H

@@ -17,6 +17,7 @@ add_executable(BakedEngine src/main.cpp
         src/TexturesManager/TileManager.cpp
         src/TexturesManager/TileManager.h
         src/TexturesManager/Tile.h
+        src/TexturesManager/Tile.cpp
 )
 target_link_libraries(BakedEngine PRIVATE raylib)
 
