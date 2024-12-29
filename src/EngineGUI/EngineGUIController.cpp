@@ -4,6 +4,8 @@
 
 #include "EngineGUIController.h"
 
+#include "../Shapes/ShapeManager.h"
+
 void EngineGUIController::loadEngine()
 {
     SetConfigFlags(FLAG_WINDOW_TOPMOST);
@@ -12,6 +14,9 @@ void EngineGUIController::loadEngine()
     {
         BeginDrawing();
         ClearBackground(RAYWHITE);
+        ShapeManager sh;
+        sh.drawRect({20,20},{30,30}, BLACK);
+        ShapeManager::getShapeList();
         EndDrawing();
     }
     CloseWindow();
