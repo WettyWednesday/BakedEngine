@@ -14,7 +14,10 @@ FetchContent_MakeAvailable(raylib)
 add_executable(BakedEngine src/main.cpp
         src/EngineGUI/EngineGUIController.cpp
         src/EngineGUI/EngineGUIController.h
-        )
+        src/TexturesManager/TileManager.cpp
+        src/TexturesManager/TileManager.h
+        src/TexturesManager/Tile.h
+)
 target_link_libraries(BakedEngine PRIVATE raylib)
 
 target_link_directories(BakedEngine PRIVATE ${RAYLIB_INCLUDE_DIRS})
