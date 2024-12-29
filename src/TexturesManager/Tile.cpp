@@ -44,18 +44,22 @@ void Tile::setNewSize(int _width, int _height, bool isAspect)
     }
 }
 
-void Tile::setNewTexture(std::string filename)
+void Tile::setNewTexture(const std::string &filename)
 {
+    textureLoc = "../Resources/" + filename + ".png";
 }
 
 std::pair<int, int> Tile::getPosition()
 {
+    return std::pair{posX,posY};
 }
 
 std::pair<int, int> Tile::getSize()
 {
+    return std::pair{width, height};
 }
 
 std::string Tile::getTexture()
 {
+    return textureLoc;
 }

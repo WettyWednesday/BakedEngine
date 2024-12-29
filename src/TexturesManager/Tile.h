@@ -12,7 +12,7 @@ class Tile
 public:
     void setNewPosition(int x, int y);
     void setNewSize(int _width, int _height, bool isAspect);
-    void setNewTexture(std::string filename);
+    void setNewTexture(const std::string &filename);
 
     std::pair<int, int> getPosition();
     std::pair<int, int> getSize();
@@ -24,7 +24,7 @@ private:
     int posY = 0;
     int width = 32;
     int height = 32;
-    std::string textureLoc = "../../Resources/MissingTexture.png";
+    std::string textureLoc = "../Resources/MissingTexture.png";
 };
 
 enum TileSizes
