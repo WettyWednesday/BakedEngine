@@ -6,8 +6,6 @@
 #define ENGINEGUICONTROLLER_H
 #include <cstdint>
 #include <string>
-
-
 #include "raylib.h"
 
 

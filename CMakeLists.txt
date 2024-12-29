@@ -14,8 +14,7 @@ FetchContent_MakeAvailable(raylib)
 add_executable(BakedEngine src/main.cpp
         src/EngineGUI/EngineGUIController.cpp
         src/EngineGUI/EngineGUIController.h
-        src/Shapes/ShapeManager.cpp
-        src/Shapes/ShapeManager.h)
+        )
 target_link_libraries(BakedEngine PRIVATE raylib)
 
 target_link_directories(BakedEngine PRIVATE ${RAYLIB_INCLUDE_DIRS})

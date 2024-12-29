@@ -4,7 +4,6 @@
 
 #include "EngineGUIController.h"
 
-#include "../Shapes/ShapeManager.h"
 
 void EngineGUIController::loadEngine()
 {
@@ -14,9 +13,6 @@ void EngineGUIController::loadEngine()
     {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        ShapeManager sh;
-        sh.drawRect({20,20},{30,30}, BLACK);
-        ShapeManager::getShapeList();
         EndDrawing();
     }
     CloseWindow();
