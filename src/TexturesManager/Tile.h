@@ -4,18 +4,27 @@
 
 #ifndef TILE_H
 #define TILE_H
+
 #include <string>
 #include <utility>
 
-class Tile
-{
+class Tile {
 public:
+    explicit Tile(int x = 0, int y = 0, int _width = 32, int _height = 32,
+                  std::string texture = "../Resources/MissingTexture.png")
+            : posX(x), posY(y), width(_width), height(_height), textureLoc(std::move(texture))
+    {}
+
     void setNewPosition(int x, int y);
+
     void setNewSize(int _width, int _height, bool isAspect);
+
     void setNewTexture(const std::string &filename);
 
     std::pair<int, int> getPosition();
+
     std::pair<int, int> getSize();
+
     std::string getTexture();
 
 
@@ -27,8 +36,7 @@ private:
     std::string textureLoc = "../Resources/MissingTexture.png";
 };
 
-enum TileSizes
-{
+enum TileSizes {
     size8 = 8,
     size16 = 16,
     size32 = 32,
