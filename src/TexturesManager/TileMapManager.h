@@ -14,7 +14,7 @@ class TileMapManager {
 public:
     TileMapManager() = default;
     void init(int map_width, int map_height, TileSizes tileSize, float offset);
-    void showGridLines();
+    void showGridLines(Color color);
 
 private:
     std::vector<std::vector<std::shared_ptr<Tile>>> tileMap;
@@ -23,6 +23,8 @@ private:
     int mapHeight = 0;
     int tileDimension = 0;
     float offset = 0;
+    float offsetX = 0;
+    float offsetY = 0;
 
 };
 
