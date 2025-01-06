@@ -16,6 +16,7 @@ FetchContent_MakeAvailable(raylib)
 add_executable(BakedEngine src/main.cpp
         src/EngineGUI/EngineGUIController.cpp
         src/EngineGUI/EngineGUIController.h
+        src/BaseLeaf.h
 )
 
 #Raylib
