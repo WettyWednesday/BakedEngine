@@ -1,13 +1,8 @@
-//
-// Created by magnu on 28-12-2024.
-//
-
 #ifndef ENGINEGUICONTROLLER_H
 #define ENGINEGUICONTROLLER_H
 #include <cstdint>
-#include <string>
-#include "raylib.h"
-#include "imgui.h"
+#include "../TexturesManager/TileMapManager.h"
+
 
 
 class EngineGUIController {

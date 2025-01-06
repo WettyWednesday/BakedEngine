@@ -1,11 +1,9 @@
-//
-// Created by magnu on 29-12-2024.
-//
-
 #ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
+
 #include <memory>
 #include <vector>
+#include <iostream>
 
 #include "Tile.h"
 #include "raylib.h"
