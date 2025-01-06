@@ -16,14 +16,6 @@ FetchContent_MakeAvailable(raylib)
 add_executable(BakedEngine src/main.cpp
         src/EngineGUI/EngineGUIController.cpp
         src/EngineGUI/EngineGUIController.h
-        src/TexturesManager/TileManager.cpp
-        src/TexturesManager/TileManager.h
-        src/TexturesManager/Tile.h
-        src/TexturesManager/Tile.cpp
-        src/TexturesManager/TextureManager.cpp
-        src/TexturesManager/TextureManager.h
-        src/TexturesManager/TileMapManager.cpp
-        src/TexturesManager/TileMapManager.h
 )
 
 #Raylib
