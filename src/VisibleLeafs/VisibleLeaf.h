@@ -1,0 +1,10 @@
+#ifndef BAKEDENGINE_VISIBLELEAF_H
+#define BAKEDENGINE_VISIBLELEAF_H
+
+
+class VisibleLeaf {
+
+};
+
+
+#endif //BAKEDENGINE_VISIBLELEAF_H

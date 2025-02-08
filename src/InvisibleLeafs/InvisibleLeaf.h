@@ -1,0 +1,10 @@
+#ifndef BAKEDENGINE_INVISIBLELEAF_H
+#define BAKEDENGINE_INVISIBLELEAF_H
+
+
+class InvisibleLeaf {
+
+};
+
+
+#endif //BAKEDENGINE_INVISIBLELEAF_H
