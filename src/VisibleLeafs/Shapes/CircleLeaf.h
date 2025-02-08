@@ -1,0 +1,10 @@
+#ifndef BAKEDENGINE_CIRCLELEAF_H
+#define BAKEDENGINE_CIRCLELEAF_H
+
+
+class CircleLeaf {
+
+};
+
+
+#endif //BAKEDENGINE_CIRCLELEAF_H
