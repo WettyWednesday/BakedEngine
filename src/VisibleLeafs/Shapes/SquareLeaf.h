@@ -1,8 +1,9 @@
 #ifndef BAKEDENGINE_SQUARELEAF_H
 #define BAKEDENGINE_SQUARELEAF_H
 
+#include "../VisibleLeaf.h"
 
-class SquareLeaf {
+class SquareLeaf : public VisibleLeaf{
 
 };
 

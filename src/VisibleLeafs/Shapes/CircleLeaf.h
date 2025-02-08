@@ -1,8 +1,9 @@
 #ifndef BAKEDENGINE_CIRCLELEAF_H
 #define BAKEDENGINE_CIRCLELEAF_H
 
+#include "../VisibleLeaf.h"
 
-class CircleLeaf {
+class CircleLeaf : public VisibleLeaf{
 
 };
 

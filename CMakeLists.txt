@@ -15,18 +15,11 @@ FetchContent_MakeAvailable(raylib)
 
 add_executable(BakedEngine src/main.cpp
         src/EngineGUI/EngineGUIController.cpp
-        src/EngineGUI/EngineGUIController.h
-        src/BaseLeaf.h
         src/InvisibleLeafs/InvisibleLeaf.cpp
-        src/InvisibleLeafs/InvisibleLeaf.h
         src/InvisibleLeafs/InvisibleLeaf.cpp
-        src/InvisibleLeafs/InvisibleLeaf.h
-        src/VisibleLeafs/VisibleLeaf.h
         src/VisibleLeafs/VisibleLeaf.cpp
         src/VisibleLeafs/Shapes/SquareLeaf.cpp
-        src/VisibleLeafs/Shapes/SquareLeaf.h
         src/VisibleLeafs/Shapes/CircleLeaf.cpp
-        src/VisibleLeafs/Shapes/CircleLeaf.h
 )
 
 #Raylib

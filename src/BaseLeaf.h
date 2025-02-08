@@ -2,19 +2,39 @@
 #define BASELEAF_H
 
 #include <utility>
+#include <thread>
+#include <atomic>
 
 class BaseLeaf
 {
 public:
-    virtual ~BaseLeaf() = default;
+    BaseLeaf() : isRunning(false) {}
+
+    void start() {
+        if (!isRunning) {
+            isRunning = true;
+            workingThread = std::thread(&BaseLeaf::run, this);
+        }
+    }
+
+    void stop() {
+        if (isRunning) {
+            isRunning = false;
+            if (workingThread.joinable()) {
+                workingThread.join();
+            }
+        }
+    }
+
+    virtual ~BaseLeaf() {
+        stop();
+    }
 
 protected:
-    virtual void setPosition(int _x, int _y);
-    virtual std::pair<int,int> getPosition();
+    std::thread workingThread;
+    std::atomic<bool> isRunning;
 
-private:
-    int posX = 0;
-    int posY = 0;
+    virtual void run() = 0;
 };
 
 
