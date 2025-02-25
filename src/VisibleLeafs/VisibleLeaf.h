@@ -1,13 +1,12 @@
 #ifndef BAKEDENGINE_VISIBLELEAF_H
 #define BAKEDENGINE_VISIBLELEAF_H
 
-#include "../BaseLeaf.h"
 
-class VisibleLeaf : public BaseLeaf{
-protected:
-    void run() override {
-        //TODO: Add functionality
-    }
+class VisibleLeaf{
+public:
+    virtual ~VisibleLeaf() = default;
+
+    virtual void draw() = 0;
 };
 
 

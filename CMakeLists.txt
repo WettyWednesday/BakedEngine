@@ -20,6 +20,8 @@ add_executable(BakedEngine src/main.cpp
         src/VisibleLeafs/VisibleLeaf.cpp
         src/VisibleLeafs/Shapes/SquareLeaf.cpp
         src/VisibleLeafs/Shapes/CircleLeaf.cpp
+        src/BaseLeaf.h
+        src/BaseLeaf.cpp
 )
 
 #Raylib

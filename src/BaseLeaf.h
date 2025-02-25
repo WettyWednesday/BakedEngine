@@ -4,37 +4,23 @@
 #include <utility>
 #include <thread>
 #include <atomic>
+#include <vector>
+#include <memory>
+
+#include "raylib.h"
+#include "VisibleLeafs/VisibleLeaf.h"
+#include "InvisibleLeafs/InvisibleLeaf.h"
 
 class BaseLeaf
 {
 public:
-    BaseLeaf() : isRunning(false) {}
+    BaseLeaf() = default;
 
-    void start() {
-        if (!isRunning) {
-            isRunning = true;
-            workingThread = std::thread(&BaseLeaf::run, this);
-        }
-    }
+    void create();
 
-    void stop() {
-        if (isRunning) {
-            isRunning = false;
-            if (workingThread.joinable()) {
-                workingThread.join();
-            }
-        }
-    }
-
-    virtual ~BaseLeaf() {
-        stop();
-    }
-
-protected:
-    std::thread workingThread;
-    std::atomic<bool> isRunning;
-
-    virtual void run() = 0;
+private:
+    std::vector<std::shared_ptr<VisibleLeaf>> visibleLeafs;
+    std::vector<std::shared_ptr<InvisibleLeaf>> invisibleLeafs;
 };
 
 

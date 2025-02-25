@@ -1,14 +1,12 @@
 #ifndef BAKEDENGINE_INVISIBLELEAF_H
 #define BAKEDENGINE_INVISIBLELEAF_H
 
-#include "../BaseLeaf.h"
 
-class InvisibleLeaf : public BaseLeaf {
-protected:
-    void run() override {
-        //TODO: Add functionality
-    }
+class InvisibleLeaf {
+public:
+    virtual ~InvisibleLeaf() = default;
 
+    virtual void update() = 0;
 };
 
 
