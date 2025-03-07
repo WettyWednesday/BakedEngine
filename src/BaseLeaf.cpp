@@ -4,37 +4,50 @@ void BaseLeaf::create()
 {
     InitWindow(800,600,"BaseLeaf");
 
-    auto drawVisible = [&]() {
-        while (!WindowShouldClose()) {
-            BeginDrawing();
-            ClearBackground(RAYWHITE);
-
-            for (const auto& leaf : visibleLeafs) {
-                leaf->draw();
-            }
-
-            EndDrawing();
-        }
-    };
-
-    auto updateInvisible = [&]() {
-        while (!WindowShouldClose()) {
+    std::thread updateThread([&]() {
+        while (running) {
+            std::lock_guard<std::mutex> lock(leafMutex);
             for (const auto& leaf : invisibleLeafs) {
                 leaf->update();
             }
         }
-    };
+    });
 
-    std::thread drawThread(drawVisible);
-    std::thread updateThread(updateInvisible);
+    while (!WindowShouldClose()) {
+        {
+            std::lock_guard<std::mutex> lock(leafMutex);
+            for (const auto& leaf : visibleLeafs) {
+                leaf->update();
+            }
+        }
 
-    if (drawThread.joinable()) {
-        drawThread.join();
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+
+        {
+            std::lock_guard<std::mutex> lock(leafMutex);
+            for (const auto& leaf : visibleLeafs) {
+                leaf->draw();
+            }
+        }
+
+        EndDrawing();
     }
 
+    running = false;
     if (updateThread.joinable()) {
         updateThread.join();
     }
 
     CloseWindow();
+}
+
+void BaseLeaf::add(std::shared_ptr<InvisibleLeaf> invisibleLeaf)
+{
+
+}
+
+void BaseLeaf::add(std::shared_ptr<VisibleLeaf> visibleLeaf)
+{
+
 }

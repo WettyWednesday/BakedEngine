@@ -6,6 +6,7 @@
 #include <atomic>
 #include <vector>
 #include <memory>
+#include <mutex>
 
 #include "raylib.h"
 #include "VisibleLeafs/VisibleLeaf.h"
@@ -18,9 +19,16 @@ public:
 
     void create();
 
+    void add(std::shared_ptr<VisibleLeaf> visibleLeaf);
+
+    void add(std::shared_ptr<InvisibleLeaf> invisibleLeaf);
+
 private:
     std::vector<std::shared_ptr<VisibleLeaf>> visibleLeafs;
     std::vector<std::shared_ptr<InvisibleLeaf>> invisibleLeafs;
+    std::mutex leafMutex;
+
+    bool running = true;
 };
 
 
