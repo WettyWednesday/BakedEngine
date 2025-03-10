@@ -1,6 +1,7 @@
 #ifndef BAKEDENGINE_VISIBLELEAF_H
 #define BAKEDENGINE_VISIBLELEAF_H
 
+#include "raylib.h"
 
 class VisibleLeaf{
 public:

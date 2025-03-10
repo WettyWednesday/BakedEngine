@@ -19,9 +19,9 @@ public:
 
     void create();
 
-    void add(std::shared_ptr<VisibleLeaf> visibleLeaf);
+    void add(std::shared_ptr<VisibleLeaf> &visibleLeaf);
 
-    void add(std::shared_ptr<InvisibleLeaf> invisibleLeaf);
+    void add(std::shared_ptr<InvisibleLeaf> &invisibleLeaf);
 
 private:
     std::vector<std::shared_ptr<VisibleLeaf>> visibleLeafs;

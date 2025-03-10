@@ -24,6 +24,8 @@ void BaseLeaf::create()
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
+        DrawText("Hello rn", 100 ,100, 20, BLACK);
+
         {
             std::lock_guard<std::mutex> lock(leafMutex);
             for (const auto& leaf : visibleLeafs) {
@@ -42,12 +44,12 @@ void BaseLeaf::create()
     CloseWindow();
 }
 
-void BaseLeaf::add(std::shared_ptr<InvisibleLeaf> invisibleLeaf)
+void BaseLeaf::add(std::shared_ptr<InvisibleLeaf> &invisibleLeaf)
 {
-
+    invisibleLeafs.push_back(invisibleLeaf);
 }
 
-void BaseLeaf::add(std::shared_ptr<VisibleLeaf> visibleLeaf)
+void BaseLeaf::add(std::shared_ptr<VisibleLeaf> &visibleLeaf)
 {
-
+    visibleLeafs.push_back(visibleLeaf);
 }
