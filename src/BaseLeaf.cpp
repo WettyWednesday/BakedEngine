@@ -2,54 +2,42 @@
 
 void BaseLeaf::create()
 {
-    InitWindow(800,600,"BaseLeaf");
+    InitWindow(800, 600, "Raylib BaseLeaf Example");
 
-    std::thread updateThread([&]() {
-        while (running) {
-            std::lock_guard<std::mutex> lock(leafMutex);
-            for (const auto& leaf : invisibleLeafs) {
-                leaf->update();
-            }
-        }
-    });
-
-    while (!WindowShouldClose()) {
-        {
-            std::lock_guard<std::mutex> lock(leafMutex);
-            for (const auto& leaf : visibleLeafs) {
-                leaf->update();
-            }
-        }
-
+    while (!WindowShouldClose())
+    {
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        DrawText("Hello rn", 100 ,100, 20, BLACK);
-
+        if (!visibleLeafs.empty() || !invisibleLeafs.empty())
         {
-            std::lock_guard<std::mutex> lock(leafMutex);
-            for (const auto& leaf : visibleLeafs) {
-                leaf->draw();
+            for (auto& leaf : visibleLeafs) {
+                //TODO:
+            }
+
+            for (auto& leaf : invisibleLeafs) {
+                //TODO:
             }
         }
 
         EndDrawing();
     }
 
-    running = false;
-    if (updateThread.joinable()) {
-        updateThread.join();
-    }
-
+    // Cleanup
     CloseWindow();
 }
 
-void BaseLeaf::add(std::shared_ptr<InvisibleLeaf> &invisibleLeaf)
+template<typename T>
+void BaseLeaf::add(T &&leaf)
 {
-    invisibleLeafs.push_back(invisibleLeaf);
-}
+    static_assert(std::is_base_of_v<VisibleLeaf, std::decay_t<T>> ||
+                  std::is_base_of_v<InvisibleLeaf, std::decay_t<T>>,
+                  "Object must be derived from either Visible or Invisible Leaf"
+    );
 
-void BaseLeaf::add(std::shared_ptr<VisibleLeaf> &visibleLeaf)
-{
-    visibleLeafs.push_back(visibleLeaf);
+    if constexpr (std::is_base_of_v<VisibleLeaf, std::decay_t<T>>) {
+        visibleLeafs.push_back(std::make_unique<std::decay_t<T>>(std::forward<T>(leaf)));
+    } else if constexpr (std::is_base_of_v<InvisibleLeaf, std::decay_t<T>>) {
+        invisibleLeafs.push_back(std::make_unique<std::decay_t<T>>(std::forward<T>(leaf)));
+    }
 }

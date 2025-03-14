@@ -19,16 +19,13 @@ public:
 
     void create();
 
-    void add(std::shared_ptr<VisibleLeaf> &visibleLeaf);
-
-    void add(std::shared_ptr<InvisibleLeaf> &invisibleLeaf);
+    template<typename T>
+    void add(T&& leaf);
 
 private:
-    std::vector<std::shared_ptr<VisibleLeaf>> visibleLeafs;
-    std::vector<std::shared_ptr<InvisibleLeaf>> invisibleLeafs;
-    std::mutex leafMutex;
+    std::vector<std::unique_ptr<VisibleLeaf>> visibleLeafs;
+    std::vector<std::unique_ptr<InvisibleLeaf>> invisibleLeafs;
 
-    bool running = true;
 };
 
 
