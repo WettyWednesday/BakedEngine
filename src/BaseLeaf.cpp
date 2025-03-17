@@ -2,7 +2,7 @@
 
 void BaseLeaf::create()
 {
-    InitWindow(800, 600, "Raylib BaseLeaf Example");
+    InitWindow(800, 600, "Baseleaf");
 
     while (!WindowShouldClose())
     {
@@ -12,18 +12,17 @@ void BaseLeaf::create()
         if (!visibleLeafs.empty() || !invisibleLeafs.empty())
         {
             for (auto& leaf : visibleLeafs) {
-                //TODO:
+                leaf->draw();
             }
 
             for (auto& leaf : invisibleLeafs) {
-                //TODO:
+                leaf->update();
             }
         }
 
         EndDrawing();
     }
 
-    // Cleanup
     CloseWindow();
 }
 
